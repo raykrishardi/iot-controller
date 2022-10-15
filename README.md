@@ -13,14 +13,15 @@ IoT controller server and client (cli) built using Go gRPC
 #### Server (Raspberry pi)
 ```
 docker run -d -p 50001:50001 -e GRPC_PORT=50001 raylayadi/iot-controller-grpc:rpi-latest
-```
 
-#### Client
-```
 git clone https://github.com/raykrishardi/iot-controller.git
 cd iot-controller
-make build-iot-cli
-cd iot-controller-cli
-./iot led --pin 17 --active=true # Turn LED on pin 17
-./iot led --pin 17 --active=false # Turn LED off pin 17
+make build-iot-grpc-rpi
+cd iot-controller-grpc
+env GRPC_PORT=50001 ./iotGRPC
+```
+
+#### Client (MacOS)
+```
+docker run -e GRPC_HOST="<rpi IP>" -e GRPC_PORT="50001" -it raylayadi/iot-controller-cli:latest led --pin 17 --active=true
 ```
