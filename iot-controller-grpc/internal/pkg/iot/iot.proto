@@ -1,0 +1,22 @@
+syntax = "proto3"; 
+
+package iot;
+
+option go_package = "/iot";
+
+message Led {
+ int32 pin = 1;
+ bool active = 2;
+}
+
+message IotRequest {
+ Led led = 1;
+}
+
+message IotResponse {
+ string result = 1;
+}
+
+service IotService {
+ rpc ProcessIot(IotRequest) returns (IotResponse);
+}
