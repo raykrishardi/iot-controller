@@ -21,5 +21,6 @@ env GRPC_PORT=50001 ./iotGRPC
 
 #### Client (MacOS)
 ```
+# Assuming output pin for the LED is pin 17
 docker run -e GRPC_HOST="<rpi IP>" -e GRPC_PORT="50001" -it raylayadi/iot-controller-cli:latest led --pin 17 --active=true
 ```
